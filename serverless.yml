@@ -1,0 +1,21 @@
+service: testbicevida
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+provider:
+  name: aws
+  runtime: nodejs12.x
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
+functions:
+  hello:
+    handler: index.calculatePolicyValue
+    events:
+      - http:
+          path: calculatePolicy
+          method: get
+
